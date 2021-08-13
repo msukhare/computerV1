@@ -52,7 +52,6 @@ def parse_sub(tokens: list) -> Tuple[AST, int]:
     left, current = parse_dot(tokens)
     if current < len(tokens) and tokens[current] == '-':
         right, current_r = parse_sub(tokens[current + 1: ])
-        right.value = '-' + right.value
         return AST(tokens[current], True, left, right), current + current_r + 1
     return left, current
 
